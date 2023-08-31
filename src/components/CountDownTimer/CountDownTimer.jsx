@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { NotificationMessage } from '../NotificationMessage/NotificationMessage';
 import { TextTimer, TimerWrapper, Text } from './CountDownTimer.styled';
 
 function CountdownTimer({ targetDate }) {
@@ -9,7 +8,6 @@ function CountdownTimer({ targetDate }) {
     minutes: 0,
     seconds: 0,
   });
-  const [notificationMessage, setNotificationMessage] = useState(false);
 
   const calculateTimeLeft = () => {
     const now = new Date().getTime();
@@ -24,7 +22,6 @@ function CountdownTimer({ targetDate }) {
         seconds: Math.floor((difference / 1000) % 60),
       };
     } else {
-      setNotificationMessage(true);
     }
     setTimeLeft(timeLeftTo);
     return timeLeftTo;
@@ -43,14 +40,8 @@ function CountdownTimer({ targetDate }) {
 
   return (
     <TimerWrapper>
-      {!notificationMessage ? (
-        <div>
-          <TextTimer>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</TextTimer>
+      <TextTimer>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</TextTimer>
           <Text>left until start of work</Text>
-        </div>
-      ) : (
-        <NotificationMessage />
-      )}
     </TimerWrapper>
 
   );
