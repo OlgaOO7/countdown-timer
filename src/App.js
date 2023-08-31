@@ -1,4 +1,3 @@
-
 import CountdownTimer from './components/CountDownTimer/CountDownTimer';
 
 function App() {
